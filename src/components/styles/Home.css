@@ -1,0 +1,60 @@
+.home-component {
+    background-image: url('wires1.png');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.home-image {
+    width: 400px;
+    height: 300px;
+    border-radius: 8pt;
+    position: relative;
+}
+
+.home-image:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 700px){
+    .home-image {
+        width: 325px;
+        height: 225px;
+    }
+}
+
+.home-background {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin-bottom: 30px; */
+}
+
+.quote{
+    margin: 20px;
+}
+
+#tile-background {
+    /* background-color: white; */
+    width: 87vw;
+    height: 100%;
+    margin: 0 auto;
+    /* border: solid purple 2pt; */
+    text-align: center;
+}
+
+.home-btn {
+    margin: 10px 0 30px;
+    font-family: 'Source code pro', cursive;
+    background-color: purple;
+    padding: 10px;
+    color: white;
+    border: solid white 2pt;
+}

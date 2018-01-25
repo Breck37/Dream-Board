@@ -1,0 +1,128 @@
+/* .login-page {
+    height: 100vh;
+    background-image: url('https://mfiles.alphacoders.com/614/614008.jpg');
+    background: radial-gradient(ellipse at center, rgba(179,220,237,1) 0%, #29b8e5 50%, rgba(188,224,238,1) 100%);
+    color: white;
+    background-blend-mode: luminosity;
+    opacity: 0.9;
+}
+
+.login-head {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #29b8e5;
+    font-family: 'Shadows Into Light', cursive;
+    border-bottom: solid black 2pt;
+    width: 100vw;
+    color: white;
+    height: 18vh;
+    font-size: 14pt;
+    opacity: 0.6
+}
+
+.seize {
+    width: 20vw;
+    height: 20vh;
+}
+.title{
+    margin-top: 4vh;
+} */
+
+
+
+
+/* .login-box {
+    width: 20vw;
+    height: 25vh;
+    border-radius: 5pt;
+    border: solid #5e5e5e 2pt;
+    box-shadow: 10px 10px 49px 3px rgba(0,0,0,0.75);
+    margin: 18vh auto;
+    text-align: center;
+} */
+
+/* @media .login-box(min-width) */
+
+/* .home-btn-login {
+    color: rgb(65, 197, 250);
+    text-decoration: none;
+    background-color: #ffffff;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 15px;
+    margin: 10vh auto;
+} */
+
+.login-page {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.seize {
+    height: 30%;
+    width: 30%;
+    margin: 0 auto;
+    animation-name: fadeIn;
+    animation-duration: 5s;
+    /* border: solid purple 2pt; */
+}
+
+@keyframes fadeIn{
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: .25;
+    }
+    50% {
+        opacity: .5;
+    }
+    75% {
+        opacity: .75;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.login-box {
+    margin: 40% auto;
+    background-color: purple;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box:hover{
+    border-radius: 50%;
+}
+
+.btn-login {
+    margin: 0 auto;
+    width: 50%;
+    border: solid black 1pt;
+    background: white;
+    font-size: 8pt;
+    color: purple;
+    padding: 5%;
+}
+
+.btn-login:hover {
+    transform: scale(1.2);
+}
+
+@media screen and (min-width: 800px){
+    .btn-login {
+        font-size: 18pt;
+    }
+    .login-box {
+        margin: 5% auto;
+    }
+}

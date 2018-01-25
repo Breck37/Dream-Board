@@ -1,0 +1,10 @@
+.search-component{
+    background: url('../styles/wires1.png');
+    /* height: 100vh; */
+    background-position: relative;
+}
+.gcse-searchbox {
+    width: 50%;
+    position: absolute;
+    bottom: 200px;
+}

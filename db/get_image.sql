@@ -1,0 +1,1 @@
+SELECT * FROM dream_images WHERE id = $1;

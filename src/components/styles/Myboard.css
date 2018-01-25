@@ -1,0 +1,164 @@
+.myboard-component {
+    /* background-image: url('wires1.png'); */
+    background-size: 1500px;
+    height: 100%;
+    background-repeat: no-repeat;
+    bottom: 0;
+    background-position: fixed;    
+}
+.image {
+    width: 400px;
+    height: 300px;
+    border-radius: 8pt;
+    position: relative;
+}
+.image-container {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.tile-boxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 150px;
+    align-items: center;
+    border: solid purple 2pt;
+    width: 87vw;
+}
+
+/* @media screen and (min-width: 1020px){
+    .image {
+        width: 400px;
+        height: 300px;
+    }
+    .image-container {
+        justify-content: center;
+        align-items: center;
+        margin: 40px;
+    } 
+    .tile-boxes {
+        width: 54vw;
+        border: solid purple 2pt;
+    }
+} */
+
+/* .account-info {
+    margin: 0 auto;
+    width: 90%;
+    align-items: center;
+} */
+
+.image-texts {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   -webkit-animation: colorChange 20s infinite alternate;
+   /* animation-duration: 20s infinite; */
+}
+
+@keyframes colorChange{
+    0% {
+       color: blue;
+       top: 0px;
+       /* left: 5px; */
+    }
+    20% {
+        color: rgb(255, 52, 177);
+        top: 20px;
+        /* left: 17px; */
+    }
+    40% {
+        color: greenyellow;
+        top: 40px;
+        /* left: 4px; */
+    }
+    60% {
+        color: purple;
+        top: 60px;
+        right: 20px;
+        /* left: 20px; */
+    }
+    80% {
+        color: white;
+        top: 75px;
+        left: 20px;
+    }
+    100% {
+        color: black;
+        top: 90px;
+        /* left: 10px; */
+    }
+}
+
+.user-info {
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;
+}
+
+.myboard-btn {
+    margin: 20px 10px 30px;
+    font-family: 'Source code pro', cursive;
+    width: 200px;
+    background-color: purple;
+    padding: 10px;
+    color: white;
+    border: solid white 2pt;
+}
+.account-info-detail {
+    border: solid purple 2pt;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.delete-btn { 
+    text-decoration: none;
+    position: absolute;
+    color: rgb(255, 6, 255);
+    bottom: 0;
+    left: 100px;
+    background: transparent;
+    border: none;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    font-size: 16pt;
+    font-weight: 700;
+    opacity: 0;
+} 
+.edit-btn { 
+    text-decoration: none;
+    position: absolute;
+    color: rgb(255, 6, 255);
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    border: none;
+    width: 100px;
+    height: 50px;
+    font-size: 16pt;
+    font-weight: 700;
+    opacity: 0;
+} 
+
+.tiles:hover .delete-btn{
+    opacity: 1;
+    margin: 0 auto;
+}
+.tiles:hover .edit-btn{
+    opacity: 1;
+    margin: 0 auto;
+}
+
+.tiles:hover {
+    transform: scale(1.1);
+}

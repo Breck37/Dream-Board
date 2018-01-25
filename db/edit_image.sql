@@ -1,0 +1,1 @@
+SELECT user_id, image_url, image_text FROM dream_images WHERE id = $1; 

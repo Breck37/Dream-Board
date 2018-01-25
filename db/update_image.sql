@@ -1,0 +1,1 @@
+UPDATE dream_images SET image_text = $1 WHERE id = $2;
