@@ -82,34 +82,15 @@ app.get('/getcategory', ictrl.getImageCategories)
 
 //Delete Image
 app.delete("/deletedream/:id/:userid", ictrl.deleteImage)
-// (req, res) => {
-//   app
-//     .get("db")
-//     .delete_image(req.params.id, req.params.userid)
-//     .then(images => {
-//       res.send(images);
-//     });
-// });
+
 
 //Edit Image
 app.get(`/alterdream/:id`, ictrl.editImage)
-// (req, res) => {
-//   app.get('db')
-//   .get_image([req.params.id])
-//   .then(image => {
-//     res.send(image)
-//   })
-// })
+
 
 //Update image in Database
 app.patch(`/alterdream/:text/:id`, ictrl.updateImage)
-// (req, res) => {
-//   app.get('db')
-//   .update_image(req.params.text, req.params.id)
-//   .then(() => {
-//     res.status(200).send('')
-//   })
-// })
+
 
 //Logout
 app.post('/logout', (req, res) => {
