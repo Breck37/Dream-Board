@@ -72,3 +72,37 @@ h3 {
   color: black;
   position: absolute; 
 } */
+
+@media screen and (max-width: 1024px) and (max-height: 1366px){
+  .previewComponent {
+    width: 700px;
+  }
+  .imgPreview {
+    width: 500px;
+  }
+  .upload-img{
+    width: 495px;
+    height: 295px; 
+  }
+  .cat {
+    margin: 10px;
+    border: solid black 1pt;
+
+  }
+}
+@media screen and (max-width: 375px) and (max-height: 667px){
+  .previewComponent {
+    width: 325px;
+  }
+  .imgPreview{
+    width: 325px;
+  }
+  .upload-img{
+    width: 320px;
+    height: 295px;
+  }
+  .cat {
+    border: solid black 1pt;
+    margin: 5px;
+  }
+}

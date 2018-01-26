@@ -63,8 +63,8 @@
 }
 
 .seize {
-    height: 30%;
-    width: 30%;
+    height: 25%;
+    width: 25%;
     margin: 0 auto;
     animation-name: fadeIn;
     animation-duration: 5s;
@@ -91,9 +91,9 @@
 
 
 .login-box {
-    margin: 40% auto;
+    /* margin-top: 50%; */
     background-color: purple;
-    width: 400px;
+    width: 500px;
     height: 300px;
     display: flex;
     justify-content: center;
@@ -116,6 +116,23 @@
 
 .btn-login:hover {
     transform: scale(1.2);
+}
+
+@media screen and (max-width: 1024px) and (max-height: 1366px){
+    .login-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 375px) and (max-height: 667px){
+    .login-box {
+        margin-top: 100px;
+        width: 50%;
+        height: 200px;
+    }
 }
 
 @media screen and (min-width: 800px){

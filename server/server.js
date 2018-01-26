@@ -15,7 +15,7 @@ const express = require("express"),
 
 app.use(bodyParser.json());
 
-app.use(express.static(`${__dirname}/../build`));
+// app.use(express.static(`${__dirname}/../build`));
 
 app.use(
   session({
@@ -143,10 +143,10 @@ app.get("/user-data", checkLoggedIn, (req, res) => {
   }
 });
 
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-})
+// app.get('*', (req, res)=>{
+//   res.sendFile(path.join(__dirname, '../build/index.html'));
+// })
 
-const PORT = 5000;
-
+const PORT = 3035;
+{/*"proxy": "http://138.197.196.90:5000",*/}
 app.listen(PORT, () => console.log(`We be jamming to the tunes of ${PORT}`));

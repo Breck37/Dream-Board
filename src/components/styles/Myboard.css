@@ -6,16 +6,22 @@
     bottom: 0;
     background-position: fixed;    
 }
+
+.t-board {
+    margin: 0 auto;
+}
 .image {
     width: 400px;
     height: 300px;
     border-radius: 8pt;
     position: relative;
+    margin: 0 70px;
 }
 .image-container {
     display: flex;
     flex-direction: row;
     overflow: hidden;
+    /* margin: 0 50px; */
 }
 
 .tile-boxes {
@@ -161,4 +167,34 @@
 
 .tiles:hover {
     transform: scale(1.1);
+}
+
+
+@media screen and (max-width: 375px) and (max-height: 667px){
+    .image{
+        margin-left: 25px;
+    }
+}
+
+@media screen and (max-width: 1030px) and (max-height: 1400px){
+    /* .t{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    } */
+   .image{
+       width: 300px;
+       height: 250px;
+       margin: 0 70px;
+   }
+}
+@media screen and (max-width: 700px){
+    .image {
+        width: 325px;
+        height: 225px;
+    }
+    .user-info{
+        margin-left: 0px;
+    }
 }

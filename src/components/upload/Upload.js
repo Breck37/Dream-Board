@@ -77,10 +77,11 @@ class Upload extends Component {
   //CATEGORY
   handleCategory(e){
     console.log('target', e.target.value)
-    this.state.categories.filter(elem => {
+    //eslint-disable-next-line
+    this.state.categories.filter((elem) => {
       if(elem.category_name === e.target.value){
         console.log(elem.id)
-    this.setState({
+      this.setState({
       category: elem.id
     });}
   })
@@ -102,7 +103,7 @@ class Upload extends Component {
     //CATEGORY???????????????????????????
     if(categories[0]){
       showCat = <select className='genre-choice' onChange={e => this.handleCategory(e)}>
-        <option value='Default'>Select</option>
+        <option value='Default'>Select Category</option>
         <option value={categories[0].category_name}>{categories[0].category_name}</option>
         <option value={categories[1].category_name}>{categories[1].category_name}</option>
         <option value={categories[2].category_name}>{categories[2].category_name}</option>
@@ -131,7 +132,7 @@ class Upload extends Component {
             onChange={e => this._handleTextChange(e)}
           />
           {/*CATEGORY*/}
-          <div>{showCat}</div>
+          <div className='cat'>{showCat}</div>
           <div className="submit">
             <button
               className="home-btn"

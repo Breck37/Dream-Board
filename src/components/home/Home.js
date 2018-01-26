@@ -92,9 +92,9 @@ class Home extends Component {
               </div>
                : null}
         </div>
-            <div id="tile-background">
+            <div className="tile-background">
             {this.state.grid ? (
-              <Grid>
+              <Grid className='t'>
                 {this.state.contents.map((elem, i) => {
                   // {console.log('element', elem)}
                   return (
@@ -114,7 +114,7 @@ class Home extends Component {
                 })}
               </Grid>
             ) : (
-              <Masonry>
+              <Masonry className='t' fitWidth='true'>
                 {this.state.contents.map((elem, i) => {
                   // {console.log('element', elem)}
                   return (

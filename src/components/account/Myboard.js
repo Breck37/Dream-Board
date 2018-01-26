@@ -115,7 +115,7 @@ class Myboard extends Component {
                 })}
               </Grid>
               ) : (
-          <Masonry>
+          <Masonry className='t-board'>
           {contents.map((elem, i) => {
             return (
               <div key={i} className='tiles'>
