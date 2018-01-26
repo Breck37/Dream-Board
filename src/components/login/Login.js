@@ -48,6 +48,7 @@ class Login extends Component {
 
   render() {
     return (
+      <div>
       <div className="login-page">
         <img className='seize' src={logo} alt=''/>   
         <div className="login-box">
@@ -55,6 +56,12 @@ class Login extends Component {
             Login/Register
           </button>
         </div>
+      </div>
+      <div className='about'>
+        <h1 className='welcome'>Welcome to Seize My Dream</h1>
+        <p>The digital dreamboard application that provides you, the user, an opportunity to gather a collection of images and design your future vision. Simply add an image by url, and save it to your account with relative ease.</p><br/>
+        <p>Log in to try it for yourself!</p>
+      </div>
       </div>
     );
   }

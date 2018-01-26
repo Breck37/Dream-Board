@@ -48,7 +48,7 @@
 .home-btn {
     margin: 10px 0 30px;
     font-family: 'Source code pro', cursive;
-    background-color: purple;
+    background-color: rgb(187, 3, 187);
     padding: 10px;
     color: white;
     border: solid white 2pt;
@@ -60,6 +60,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        margin: 0 auto;
     }
    .home-image{
        width: 300px;

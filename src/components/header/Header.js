@@ -32,7 +32,7 @@ class Header extends Component {
                 {/* <Link to='/alterdream' className='header-link'>Edit</Link> */}
                 <Link to='/uploaddream' className='header-link'>Upload</Link>
                 <span className='dash'>|</span>
-                <Link to='/search' className='header-link'>Search</Link> 
+                <Link to='/tipsntricks' className='header-link'>Tips & Tricks</Link> 
                 <span className='dash'>|</span>
                 <Link to='/' className='header-link' onClick={this.logout}>Logout</Link>
                 </div>

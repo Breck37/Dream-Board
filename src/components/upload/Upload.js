@@ -6,6 +6,7 @@ import Header from "../header/Header";
 import "../styles/Upload.css";
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {login} from '../../ducks/reducer';
 // import glamourous from 'glamorous';
 
@@ -117,6 +118,24 @@ class Upload extends Component {
     return (
       <div className="component">
         <Header />
+        <div className='upload-page'>
+        <div className='instructions'>
+            <h1>Upload Instructions</h1>
+            <p><b>Step 1</b></p>
+            <h3>Navigate to Google.com/imghp.</h3>
+            <p><b>Step 2</b></p>
+            <h3>Search for an image of your choice.</h3>
+            <p><b>Step 3</b></p>
+            <h3>Once you've selected your image, use the 'View Image' button to locate and copy the URL.</h3>
+            <p><b>Step 4</b></p>
+            <h3>Paste the url in the 'Image Url' box to view a preview.</h3>
+            <p><b>Step 5</b></p>
+            <h3>In the 'Add Caption' field, enter an inspiring quote or a simple reminder of why you the image represents a personal dream.</h3>
+            <p><b>Step 6</b></p>
+            <h3>Choose a category to keep your dreams organized.</h3>
+            <p><b>Step 7</b></p>
+            <h3>Click upload to SEIZE YOUR DREAM!</h3>
+        </div>
         <div className="previewComponent">
           <form onSubmit={e => this._handleSubmit(e)}>
             Image Url: <input
@@ -142,6 +161,7 @@ class Upload extends Component {
               Upload Dream
             </button>
           </div>
+        </div>
         </div>
       </div>
     );

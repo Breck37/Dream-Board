@@ -5,7 +5,7 @@ import Home from './components/home/Home';
 import Upload from './components/upload/Upload';
 import MyBoard from './components/account/Myboard';
 import Edit from './components/edit/Edit';
-import Search from './components/search/Search';
+import About from './components/about/About';
 import {Route, Switch} from 'react-router-dom';
 import Loggedout from './components/loggedOut/Loggedout';
 
@@ -20,7 +20,7 @@ class App extends Component {
           <Route path='/mydreams' component={MyBoard} />
           <Route path='/uploaddream' component={Upload} />
           <Route path='/loggedout' component={Loggedout} />
-          <Route path='/search' component={Search} />
+          <Route path='/tipsntricks' component={About} />
           </Switch>
       </div>
     );

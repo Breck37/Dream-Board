@@ -114,7 +114,7 @@ class Home extends Component {
                 })}
               </Grid>
             ) : (
-              <Masonry className='t' fitWidth='true'>
+              <Masonry className='t' columnWidth={300} itemSelector='grid-item'>
                 {this.state.contents.map((elem, i) => {
                   // {console.log('element', elem)}
                   return (

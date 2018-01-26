@@ -8,13 +8,15 @@
 #about-the-app{
     width: 85%;
     font-size: 1em;
-    /* border: solid purple 2pt; */
 }
-
-h1 {
-    color: #5d00e0;
-}
-
-p {
+.tips {
+    color: rgb(187, 3, 187);
     margin: 20px;
+}
+
+.tips:hover {
+    color: black;
+}
+h1 {
+    font-size: 36pt;
 }
