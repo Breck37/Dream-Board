@@ -135,7 +135,6 @@ class Myboard extends Component {
           })}
         </Masonry>
         )}
-        </div>
         <div className='account-info'>
         <button className='myboard-btn' onClick={this.showAccountInfo}>Show Account Info</button>
         <button className='myboard-btn' onClick={this.hideAccountInfo}>Reset</button>
@@ -155,6 +154,7 @@ class Myboard extends Component {
             })}
           </div>
         ) : null}
+        </div>
         </div>
       </div>
     );

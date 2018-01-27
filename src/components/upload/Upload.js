@@ -120,9 +120,9 @@ class Upload extends Component {
         <Header />
         <div className='upload-page'>
         <div className='instructions'>
-            <h1>Upload Instructions</h1>
+            <h1 className='inst-title'>Upload Instructions</h1>
             <p><b>Step 1</b></p>
-            <h3>Navigate to Google.com/imghp.</h3>
+            <h3>Navigate to Google.com/imghp or click <a href='https://www.google.com/imghp'>here.</a></h3>
             <p><b>Step 2</b></p>
             <h3>Search for an image of your choice.</h3>
             <p><b>Step 3</b></p>

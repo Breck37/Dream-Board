@@ -1,26 +1,27 @@
-.myboard-component {
-    /* background-image: url('wires1.png'); */
-    background-size: 1500px;
-    height: 100%;
+#tile-background {
+    background-image: url('wires1.png');
+    min-height: 100vh;
+    background-position: center;
     background-repeat: no-repeat;
-    bottom: 0;
-    background-position: fixed;    
+    background-size: cover;
+    position: relative;   
 }
 
 .t-board {
-    margin: 0 50px;
+    margin: 0 100px;
 }
 .image {
     width: 400px;
     height: 300px;
     border-radius: 8pt;
     position: relative;
-    margin: 0 70px;
+    
 }
 .image-container {
     display: flex;
     flex-direction: row;
     overflow: hidden;
+    margin: 0 70px;
     /* padding-left: 50px; */
     /* margin: 0 50px; */
 }
@@ -141,7 +142,7 @@
     font-size: 16pt;
     font-weight: 700;
     opacity: 0;
-    padding-left: 50px;
+    /* padding-left: 50px; */
 } 
 .edit-btn { 
     text-decoration: none;
@@ -156,7 +157,7 @@
     font-size: 16pt;
     font-weight: 700;
     opacity: 0;
-    padding-left: 75px;
+    /* padding-left: 75px; */
 } 
 
 .tiles:hover .delete-btn{

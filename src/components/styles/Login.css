@@ -32,7 +32,20 @@
     text-align: center;
 }
 
+.login-text{
+    display:
+}
 
+.login-text:hover{
+    animation-name: fadeText;
+    animation-duration: .5s;
+    direction: top;
+    offset-block-start: 2em;
+}
+
+@keyframes fadeText{
+
+}
 
 @keyframes fadeIn{
     0% {
