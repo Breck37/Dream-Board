@@ -2,23 +2,10 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import '../styles/Header.css';
 import logo from '../styles/imageedit_3_4114329595.png';
-// import FaCloud from 'react-icons/lib/fa/cloud';
 import {connect} from 'react-redux';
 
 class Header extends Component {
-//     constructor(){
-//         super();
-//         this.state = {
-//             responsive: false
-//         }
-//         this.response = this.response.bind(this);
-//     }
 
-// response(){
-//     this.setState({
-//         responsive: true
-//     })
-// }
     render() {
         return (
             <div className='main-header-container'>

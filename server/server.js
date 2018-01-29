@@ -5,9 +5,6 @@ const express = require("express"),
   axios = require("axios"),
   bodyParser = require("body-parser"),
   parser = require("xml2json"),
-  // multer = require("multer"),
-  // corsPrefetch = require("cors-prefetch-middleware"),
-  // imagesUpload = require("images-upload-middleware"),
   actrl = require("./controllers/account_controller"),
   ictrl = require("./controllers/image_controller"),
   path = require('path'),
@@ -53,16 +50,6 @@ app.get("/homes", (req, res) => {
   });
 });
 
-app.get("/myimages/:userid", ictrl.getDbImages)
-// (req, res) => {
-//   app
-//     .get("db")
-//     .view_image(req.params.userid)
-//     .then(images => {
-//       res.status(200).send(images);
-//     });
-// });
-
 
 //JOIN statement, needs Update
 app.get("/mydreams/:userid", actrl.getAccount);
@@ -71,13 +58,7 @@ app.get("/mydreams/:userid", actrl.getAccount);
 app.post("/uploadimage/:userid", ictrl.addImage);
 
 app.get('/getcategory', ictrl.getImageCategories)
-// (req, res) => {
-//   app.get('db')
-//   .get_cat()
-//   .then(categories => {
-//     res.send(categories);
-//   })
-// })
+
 
 
 //Delete Image
