@@ -32,19 +32,32 @@
     text-align: center;
 }
 
-.login-text{
-    display:
+/* .login-text{
+    display: none
+} */
+
+.welcome:hover{
+    animation-name: fadeText;
+    animation-duration: 5s;
 }
 
 .login-text:hover{
     animation-name: fadeText;
-    animation-duration: .5s;
-    direction: top;
-    offset-block-start: 2em;
+    animation-duration: 3s;   
+}
+
+.text {
+    animation-name: inNOu;
+    animation-duration: 10s;
 }
 
 @keyframes fadeText{
-
+    0% {
+        opacity: .5;
+    }
+    100 {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn{
@@ -88,6 +101,16 @@
     font-size: 8pt;
     color: purple;
     padding: 5%;
+}
+
+.about-btn{
+    margin: 100px auto;
+    width: 25%;
+    border: solid white 1pt;
+    background: transparent;
+    font-size: 24pt;
+    color: white;
+    padding: 1%;
 }
 
 .btn-login:hover {

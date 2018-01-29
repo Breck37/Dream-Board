@@ -21,8 +21,12 @@ let options = {
 class Login extends Component {
   constructor() {
     super();
+    this.state = {
+      about: false
+    }
     this.lock = null;
     this.login = this.login.bind(this);
+    this.showAbout = this.showAbout.bind(this);
   }
 
   //Creating Auth0 Functionality within Login Component
@@ -46,6 +50,12 @@ class Login extends Component {
     this.lock.show();
   }
 
+  showAbout(){
+    this.setState({
+      about: true
+    })
+  }
+
   render() {
     return (
       <div>
@@ -58,9 +68,13 @@ class Login extends Component {
         </div>
       </div>
       <div className='about'>
-        <h1 className='welcome'>Welcome to Seize My Dream</h1>
-        <p className='login-text'>The digital dreamboard application that provides you, the user, an opportunity to gather a collection of images and design your future vision. Simply add an image by url, and save it to your account with relative ease.</p><br/>
-        <p>Log in to try it for yourself!</p>
+        
+        {this.state.about ? 
+        <div className='text'>
+          <h1 className='welcome'>Welcome to Seize My Dream</h1>
+        <p className='login-text'>The digital vision board application that provides you, the user, an opportunity to gather a collection of images and design your future vision. Simply add an image by url, and save it to your account with relative ease.</p><br/>
+        <p className='login-text'>Log in to try it for yourself!</p>
+        </div> : <button className='about-btn' onClick={this.showAbout}>About</button>}
       </div>
       </div>
     );

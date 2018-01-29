@@ -5,9 +5,10 @@ import Home from './components/home/Home';
 import Upload from './components/upload/Upload';
 import MyBoard from './components/account/Myboard';
 import Edit from './components/edit/Edit';
-import About from './components/about/About';
+import Tips from './components/tips/Tips';
 import {Route, Switch} from 'react-router-dom';
 import Loggedout from './components/loggedOut/Loggedout';
+import AccountInfo from './components/account/AccountInfo';
 
 class App extends Component {
   render() {
@@ -20,7 +21,8 @@ class App extends Component {
           <Route path='/mydreams' component={MyBoard} />
           <Route path='/uploaddream' component={Upload} />
           <Route path='/loggedout' component={Loggedout} />
-          <Route path='/tipsntricks' component={About} />
+          <Route path='/tipsntricks' component={Tips} />
+          <Route path='/accountinfo' component={AccountInfo} />
           </Switch>
       </div>
     );

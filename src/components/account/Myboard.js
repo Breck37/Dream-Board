@@ -14,16 +14,11 @@ class Myboard extends Component {
     super(props);
     this.state = {
       contents: [],
-      account: [],
-      name: "",
-      email: "",
       grid: false,
       // id: null,
       // url: '',
       // text: '',
     };
-    this.showAccountInfo = this.showAccountInfo.bind(this);
-    this.hideAccountInfo = this.hideAccountInfo.bind(this);
     this.deleteImage = this.deleteImage.bind(this);
     this.handleGrid = this.handleGrid.bind(this);
     this.backToMason = this.backToMason.bind(this);
@@ -42,21 +37,6 @@ class Myboard extends Component {
     }).catch(() => {
       this.props.history.push('/')
     });
-  }
-
-  showAccountInfo(props) {
-    const { id } = this.props.user;
-    axios.get(`/mydreams/${id}`).then(response => {
-      this.setState({
-        account: response.data
-      });
-    });
-  }
-
-  hideAccountInfo(){
-    this.setState({
-      account: []
-    })
   }
 
   deleteImage(id){
@@ -81,7 +61,6 @@ class Myboard extends Component {
 
   render() {
     const { contents } = this.state;
-    const { account } = this.state;
     return (
       <div className='myboard-component'>
         <Header />
@@ -135,26 +114,6 @@ class Myboard extends Component {
           })}
         </Masonry>
         )}
-        <div className='account-info'>
-        <button className='myboard-btn' onClick={this.showAccountInfo}>Show Account Info</button>
-        <button className='myboard-btn' onClick={this.hideAccountInfo}>Reset</button>
-        {account[0] ? (
-          <div>
-            <div className='user-info'>
-            <h4>{this.props.user.name}</h4>
-            <h5>{this.props.user.email}</h5>
-            </div>
-            {account.map((elem, i) => {
-              return (
-                <div key={i} className='account-info-detail'>
-                  <h4><b>Image:</b></h4><h6>{elem.image_url}</h6><h4><b>/ Text:</b></h4><h6>{elem.image_text}</h6><h4><b>/ Category </b></h4><h6>{elem.category_name}</h6>
-                  
-                </div>
-              );
-            })}
-          </div>
-        ) : null}
-        </div>
         </div>
       </div>
     );

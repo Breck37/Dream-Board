@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import Header from "../header/Header";
 import axios from "axios";
 import "../styles/Home.css";
-// import url from "../Url";
 import Masonry from "react-masonry-component";
 import Grid from "react-grid-layout";
-// import Upload from "../Upload/Upload";
 import { connect } from "react-redux";
 import {login} from '../../ducks/reducer';
-// import {Link} from 'react-router-dom';
+
 
 class Home extends Component {
   constructor() {
@@ -80,7 +78,7 @@ class Home extends Component {
           {/* <h1>HomePage</h1> */}
             <div className='buttons'>
               <button className='home-btn' onClick={this.showQuote}>Quote of the Day</button>
-              <button className='home-btn' onClick={this.hideQuote}>Hide Quote</button>
+              {this.state.quote ? <button className='home-btn' onClick={this.hideQuote}>Hide Quote</button> : null}
             </div>
             <button className='home-btn' onClick={this.handleGrid}>
               Click Here for Drag and Drop
@@ -114,7 +112,7 @@ class Home extends Component {
                 })}
               </Grid>
             ) : (
-              <Masonry className='t' columnWidth={300} itemSelector='grid-item'>
+              <Masonry className='t' columnwidth={300}>
                 {this.state.contents.map((elem, i) => {
                   // {console.log('element', elem)}
                   return (
@@ -142,7 +140,6 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state)
   return {
     user: state.user
   };

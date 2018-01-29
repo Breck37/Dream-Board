@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-// import ImagesUploader from 'react-images-uploader';
-// import 'react-images-uploader/styles.css';
-// import 'react-images-uploader/font.css'
 import Header from "../header/Header";
 import "../styles/Upload.css";
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {login} from '../../ducks/reducer';
-// import glamourous from 'glamorous';
+
 
 class Upload extends Component {
   constructor(props) {
@@ -19,7 +15,9 @@ class Upload extends Component {
       text: "",
       categories: [],
       category: '',
+      inst: false,
     };
+    this.showInstructions = this.showInstructions.bind(this);
   }
 
   componentDidMount(){
@@ -33,7 +31,7 @@ class Upload extends Component {
         })
       })
     }).catch(() => {
-      this.props.history.push('/')
+      this.props.history.push('/loggedout')
     });
   }
 
@@ -88,6 +86,12 @@ class Upload extends Component {
   })
   }
 
+  showInstructions(e){
+    this.setState({
+      inst: true
+    })
+  }
+
   render() {
     console.log(this.state.category)
     let { file } = this.state;
@@ -119,27 +123,31 @@ class Upload extends Component {
       <div className="component">
         <Header />
         <div className='upload-page'>
+
+        {this.state.inst ? 
         <div className='instructions'>
-            <h1 className='inst-title'>Upload Instructions</h1>
-            <p><b>Step 1</b></p>
-            <h3>Navigate to Google.com/imghp or click <a href='https://www.google.com/imghp'>here.</a></h3>
-            <p><b>Step 2</b></p>
-            <h3>Search for an image of your choice.</h3>
-            <p><b>Step 3</b></p>
-            <h3>Once you've selected your image, use the 'View Image' button to locate and copy the URL.</h3>
-            <p><b>Step 4</b></p>
-            <h3>Paste the url in the 'Image Url' box to view a preview.</h3>
-            <p><b>Step 5</b></p>
-            <h3>In the 'Add Caption' field, enter an inspiring quote or a simple reminder of why you the image represents a personal dream.</h3>
-            <p><b>Step 6</b></p>
-            <h3>Choose a category to keep your dreams organized.</h3>
-            <p><b>Step 7</b></p>
-            <h3>Click upload to SEIZE YOUR DREAM!</h3>
+        <h1 className='inst-title'>Upload Instructions</h1>
+        <p><b>Step 1</b></p>
+        <h3>Navigate to Google.com/imghp or click <a href='https://www.google.com/imghp'>here.</a></h3>
+        <p><b>Step 2</b></p>
+        <h3>Search for an image of your choice.</h3>
+        <p><b>Step 3</b></p>
+        <h3>Once you've selected your image, use the 'View Image' button to locate and copy the URL.</h3>
+        <p><b>Step 4</b></p>
+        <h3>Paste the URL in the 'Image Url' box to view a preview.</h3>
+        <p><b>Step 5</b></p>
+        <h3>In the 'Add Caption' field, enter an inspiring quote or a simple reminder of why you the image represents a personal dream.</h3>
+        <p><b>Step 6</b></p>
+        <h3>Choose a category to keep your dreams organized.</h3>
+        <p><b>Step 7</b></p>
+        <h3>Click upload to SEIZE YOUR DREAM!</h3>
         </div>
+        : <button className='inst-button' onClick={this.showInstructions}>Instructions</button>}
         <div className="previewComponent">
           <form onSubmit={e => this._handleSubmit(e)}>
             Image Url: <input
               className="fileInput"
+              placeholder='paste URL here'
               onChange={e => this._handleImageChange(e)}
             />
           </form>

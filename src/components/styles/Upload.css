@@ -8,10 +8,37 @@
 .upload-page {
   display: flex;
   flex-direction: row;
+  color: black;
+  background-image: url('wires1.png');
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    font-size: 18pt;
 }
 
 .instructions {
   width: 50%;
+  font-family: 'Gloria Hallelujah', cursive;
+  background-color: white;
+}
+
+.inst-button {
+  height: 100px;
+  width: 40%;
+  /* width: 200px; */
+  margin: 100px auto;
+  font-size: 18pt;
+  background: white;
+  border: solid rgb(187, 3, 187) 1pt;
+  color: rgb(187, 3, 187);
+  cursor: pointer;
+}
+
+.inst-button:hover {
+  background: rgb(187, 3, 187);
+  color: white;
 }
 
 h1 {
@@ -23,6 +50,7 @@ h1 {
 .instructions:hover{
   color: rgb(187, 3, 187);
 }
+
 .previewComponent {
   display: flex;
   flex-direction: column;
@@ -30,6 +58,7 @@ h1 {
   align-items: center;
   width: 50%;
   margin: 10px auto;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 h3 {
@@ -52,15 +81,25 @@ h3 {
   margin: 0 auto;
   height: 400px;
   width: 500px;
+  background: white;
   border-left: 2px solid gray;
   border-right: 2px solid gray;
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
 }
 
+.previewText {
+  
+  margin: 100px auto;
+}
+
 .upload-img {
   width: 500px;
   height: 400px;
+}
+
+.state {
+  margin: 15px auto;
 }
 
 .caption{
@@ -72,8 +111,20 @@ h3 {
 }
 
 @media screen and (max-width: 1024px) and (max-height: 1366px){
+  .upload-page {
+    display: flex;
+    flex-direction: column;
+  }
   .previewComponent {
     width: 700px;
+    margin: 0 auto;
+  }
+  .instructions {
+    margin: 0 auto;
+  }
+  .upload-img{
+    display: flex; 
+    flex-direction: column;
   }
   .imgPreview {
     width: 500px;

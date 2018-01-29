@@ -1,5 +1,5 @@
 .home-component {
-    /* background-image: url('wires1.png'); */
+    background-image: url('wires1.png');
     height: 100%;
     width: 100%;
     background-repeat: no-repeat;
@@ -52,6 +52,7 @@
     padding: 10px;
     color: white;
     border: solid white 2pt;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1030px) and (max-height: 1400px){

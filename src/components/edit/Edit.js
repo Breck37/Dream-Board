@@ -66,7 +66,10 @@ saveImage(props){
           <div className="imgPreview">
           {$imagePreview}</div>
           {/* </div> */}
-          <input value={text} onChange={(e) => this.updateText(e)}/>
+          <div className='state'>
+          {this.state.text}
+          </div>
+          <textarea value={text} onChange={(e) => this.updateText(e)}/>
           <button className='home-btn'onClick={this.saveImage}>Save</button>
         </div>
       </div>

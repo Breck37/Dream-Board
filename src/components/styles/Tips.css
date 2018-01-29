@@ -1,0 +1,39 @@
+.about-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Source code Pro', cursive;
+    background-image: url('wires1.png');
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;  
+}
+
+#about-the-app{
+    width: 85%;
+    font-size: 1em;
+    background-color: white;
+    border: solid rgb(187, 3, 187);
+}
+.tips {
+    /* color: white; */
+    color: rgb(187, 3, 187);
+    margin: 20px;
+}
+
+.tips:hover {
+    color: black;
+    font-weight: 700;
+}
+h1 {
+    font-size: 36pt;
+    
+}
+
+.screen {
+    border: solid rgb(187, 3, 187) 3pt;
+    width: 1000px;
+}
+

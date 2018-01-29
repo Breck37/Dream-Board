@@ -15,7 +15,7 @@
     height: 300px;
     border-radius: 8pt;
     position: relative;
-    
+    border: solid rgb(187, 3, 187);
 }
 .image-container {
     display: flex;
@@ -104,7 +104,7 @@
 .user-info {
     justify-content: center;
     align-items: center;
-    margin-left: 200px;
+    margin-left: 0px;
 }
 
 .myboard-btn {
@@ -122,10 +122,17 @@
 
 .account-info {
     display: flex;
-    flex-direction: column;
+    margin: 0 auto;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
+    background-image: url('wires1.png');
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;  
 }
 
 .delete-btn { 

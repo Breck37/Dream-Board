@@ -25,8 +25,8 @@ class Header extends Component {
                 <div className='header responsive'>
                 <Link to='/home'><img className='logo' src={logo} alt=''/>
                 </Link>
+                <Link className='header-link' to='/accountInfo'><span>Hello, {this.props.user.name}</span></Link>
                 <div className='links'>
-                
                 <Link to='/mydreams' className='header-link'>My Board</Link>
                 <span className='dash'>|</span>
                 {/* <Link to='/alterdream' className='header-link'>Edit</Link> */}
