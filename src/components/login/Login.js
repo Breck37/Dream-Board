@@ -74,6 +74,7 @@ class Login extends Component {
           <h1 className='welcome'>Welcome to Seize My Dream</h1>
         <p className='login-text'>The digital vision board application that provides you, the user, an opportunity to gather a collection of images and design your future vision. Simply add an image by url, and save it to your account with relative ease.</p><br/>
         <p className='login-text'>Log in to try it for yourself!</p>
+        <p className='login-text'>Feel free to use the demo login, Username: demo@123.com, password: 123</p>
         </div> : <button className='about-btn' onClick={this.showAbout}>About</button>}
       </div>
       </div>
