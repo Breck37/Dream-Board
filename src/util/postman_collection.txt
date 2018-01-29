@@ -1,0 +1,56 @@
+
+DREAM-BOARD POSTMAN COLLECTION
+https://www.getpostman.com/collections/f2017023b24d0b273b5d
+
+1)	Get S3 Images - (http://localhost:3035/home)
+
+tests['get S3 images'] = responseBody.has('ListBucketResult');
+
+tests['get Bucket name'] = responseBody.has('seize-the-dream');
+
+tests['get file name'] = responseBody.has('board-2470557_1280.jpg');
+
+2)	Add Image (http://localhost:3035/uploadimage/2)
+
+Body: {
+  "user_id": "2",
+  "image_url": "http://www.atlantisbahamas.com/media/Things%20To%20Do/Water%20Park/Beaches/Hero/Experiences_Beach.jpg",
+  "image_text": "This beach looks perfect",
+  "category": "1"
+}
+
+Test: pm.test('post image to database', function() {
+    pm.response.to.have.header("Content-Type");
+	pm.response.to.have.status(200);
+});
+
+tests['add image'] = responseBody.has("Image has been uploaded");
+
+3)	Get Database Images (http://localhost:3035/myimages/1)
+
+Headers: req.params.userid - 1
+
+Test: pm.test('Get user images from database', function() {
+	pm.response.to.have.status(200);
+});
+
+tests['Get User images 1'] = responseBody.has('image_url');
+tests['Get User images 2'] = responseBody.has('image_text');
+tests['Get User images 3'] = responseBody.has('user_id');
+
+4)	Get Database Categories (http://localhost:3035/getcategory)
+
+Test: pm.test('Get list of categories', function() {
+	pm.response.to.not.be.error;
+	pm.response.to.have.jsonBody("");
+});
+tests['get category 1'] = responseBody.has('Nature');
+tests['get category 2'] = responseBody.has('Entertainment');
+tests['get category 3'] = responseBody.has('Home');
+tests['get category 4'] = responseBody.has('Health');
+
+5)	Patch/Update image (http://localhost:3035/alterdream/"So True!"/56)
+
+Test: pm.test('Edit user images to database', function() {
+	pm.response.to.have.status(200);
+});

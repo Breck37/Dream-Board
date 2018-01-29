@@ -5,7 +5,7 @@ module.exports = {
       .get("db")
       .add_image(user_id, image_url, image_text, category)
       .then(() => {
-        res.status(200).send('OK');
+        res.status(200).send({message: 'Image has been uploaded'});
       });
   },
 

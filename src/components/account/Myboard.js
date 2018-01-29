@@ -5,7 +5,6 @@ import Masonry from "react-masonry-component";
 import { connect } from "react-redux";
 import Header from "../header/Header";
 import "../styles/Myboard.css";
-// import Masonry from 'react-masonry-css';
 import {Link} from 'react-router-dom';
 import {login} from '../../ducks/reducer';
 
@@ -15,9 +14,6 @@ class Myboard extends Component {
     this.state = {
       contents: [],
       grid: false,
-      // id: null,
-      // url: '',
-      // text: '',
     };
     this.deleteImage = this.deleteImage.bind(this);
     this.handleGrid = this.handleGrid.bind(this);
@@ -69,15 +65,16 @@ class Myboard extends Component {
               <button className='myboard-btn' onClick={this.handleGrid}>
               Click Here for Drag and Drop
               </button>
-            
               <button className='myboard-btn' onClick={this.backToMason}>Reset</button>
           </div>
+         
         </div>
         <div id="tile-background">
+        <div className='empty'></div>
+        {contents.length > 0 ? null : <h1 className='empty-board'>Please navigate to the upload section to begin building your board</h1> }
         {this.state.grid ? (
-                <Grid>
+                <Grid breakpoints={{lg: 1024, md: 996, sm: 667, xs: 375}} cols={{lg: 4, md: 3, sm: 2, xs: 1}}>
                 {contents.map((elem, i) => {
-                  // {console.log('element', elem)}
                   return (
                     <div key={i} className='tiles'>
                       <img

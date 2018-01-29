@@ -59,20 +59,20 @@ saveImage(props){
       );
     }
     return (
-      <div className='component'>
+    <div>
           <Header />
-          <div className='previewComponent'>
-          {/* <div> */}
+      <div className='edit-component'>
+          <div className='editPreviewComponent'>
           <div className="imgPreview">
           {$imagePreview}</div>
-          {/* </div> */}
           <div className='state'>
           {this.state.text}
           </div>
-          <textarea value={text} onChange={(e) => this.updateText(e)}/>
+          <textarea value={text} onChange={(e) => this.updateText(e)}/><br/>
           <button className='home-btn'onClick={this.saveImage}>Save</button>
         </div>
       </div>
+    </div>
     );
   }
 }

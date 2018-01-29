@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../header/Header';
-import './Searc.css';
+import './Search.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {login} from '../../ducks/reducer';

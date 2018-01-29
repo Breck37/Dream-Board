@@ -17,7 +17,7 @@
 
 .about{
     width: 100%;
-    height: 100vh;
+    height: 65vh;
     background-color: rgb(187, 3, 187);
     color: white;
     padding: 15px;
@@ -31,10 +31,6 @@
 .about > h1{
     text-align: center;
 }
-
-/* .login-text{
-    display: none
-} */
 
 .welcome:hover{
     animation-name: fadeText;

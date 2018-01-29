@@ -59,18 +59,10 @@ class Upload extends Component {
 
   _handleImageChange(e) {
     e.preventDefault();
-
-    // let reader = new FileReader();
     let file = e.target.value;
-
-    // reader.onloadend = () => {
       this.setState({
         file: file,
-        // imagePreviewUrl: reader.result
       });
-    // };
-
-    // reader.readAsDataURL(file);
   }
 
   //CATEGORY
@@ -105,7 +97,6 @@ class Upload extends Component {
         <div className="previewText">Please select an Image for Preview</div>
       );
     }
-    //CATEGORY???????????????????????????
     if(categories[0]){
       showCat = <select className='genre-choice' onChange={e => this.handleCategory(e)}>
         <option value='Default'>Select Category</option>
@@ -123,7 +114,6 @@ class Upload extends Component {
       <div className="component">
         <Header />
         <div className='upload-page'>
-
         {this.state.inst ? 
         <div className='instructions'>
         <h1 className='inst-title'>Upload Instructions</h1>
@@ -158,7 +148,6 @@ class Upload extends Component {
             className="caption"
             onChange={e => this._handleTextChange(e)}
           />
-          {/*CATEGORY*/}
           <div className='cat'>{showCat}</div>
           <div className="submit">
             <button

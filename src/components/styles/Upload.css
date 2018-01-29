@@ -1,10 +1,3 @@
-/* .component {
-  background: linear-gradient(to bottom, #ffffff 9%,#aa25e8 30%,#aa25e8 30%,#aa25e8 49%,#e5fff6 68%,#c123dd 82%,#efefef 94%); 
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-} */
-
 .upload-page {
   display: flex;
   flex-direction: row;
@@ -18,6 +11,24 @@
     font-size: 18pt;
 }
 
+.edit-component{
+  background-image: url('wires1.png');
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  font-size: 18pt;
+}
+
+.editPreviewcomponent{
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
 .instructions {
   width: 50%;
   font-family: 'Gloria Hallelujah', cursive;
@@ -28,7 +39,7 @@
   height: 100px;
   width: 40%;
   /* width: 200px; */
-  margin: 100px auto;
+  margin: 200px auto;
   font-size: 18pt;
   background: white;
   border: solid rgb(187, 3, 187) 1pt;
@@ -57,7 +68,7 @@ h1 {
   justify-content: center;
   align-items: center;
   width: 50%;
-  margin: 10px auto;
+  /* margin: 10px auto; */
   font-family: 'Gloria Hallelujah', cursive;
 }
 
@@ -79,8 +90,8 @@ h3 {
 .imgPreview {
   text-align: center;
   margin: 0 auto;
-  height: 400px;
-  width: 500px;
+  height: 500px;
+  width: 600px;
   background: white;
   border-left: 2px solid gray;
   border-right: 2px solid gray;
@@ -89,13 +100,12 @@ h3 {
 }
 
 .previewText {
-  
   margin: 100px auto;
 }
 
 .upload-img {
-  width: 500px;
-  height: 400px;
+  width: 600px;
+  height: 500px;
 }
 
 .state {
@@ -104,6 +114,14 @@ h3 {
 
 .caption{
   margin: 20px;
+}
+
+.empty{
+  height: 100px;
+}
+
+.empty-board {
+  color: black;
 }
 
 .cat {
@@ -128,6 +146,7 @@ h3 {
   }
   .imgPreview {
     width: 500px;
+    height: 400px;
   }
   .upload-img{
     width: 495px;

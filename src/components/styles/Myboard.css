@@ -36,28 +36,6 @@
     width: 87vw;
 }
 
-/* @media screen and (min-width: 1020px){
-    .image {
-        width: 400px;
-        height: 300px;
-    }
-    .image-container {
-        justify-content: center;
-        align-items: center;
-        margin: 40px;
-    } 
-    .tile-boxes {
-        width: 54vw;
-        border: solid purple 2pt;
-    }
-} */
-
-/* .account-info {
-    margin: 0 auto;
-    width: 90%;
-    align-items: center;
-} */
-
 .image-texts {
    position: absolute;
    top: 0;

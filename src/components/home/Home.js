@@ -75,7 +75,6 @@ class Home extends Component {
       <div className='home-component'>
         <Header />
         <div className="home-background">
-          {/* <h1>HomePage</h1> */}
             <div className='buttons'>
               <button className='home-btn' onClick={this.showQuote}>Quote of the Day</button>
               {this.state.quote ? <button className='home-btn' onClick={this.hideQuote}>Hide Quote</button> : null}
@@ -94,7 +93,6 @@ class Home extends Component {
             {this.state.grid ? (
               <Grid className='t'>
                 {this.state.contents.map((elem, i) => {
-                  // {console.log('element', elem)}
                   return (
                     <div key={i} className="tiles">
                       <img
@@ -133,7 +131,6 @@ class Home extends Component {
               </Masonry>
             )}
         </div>
-      
       </div>
     );
   }
