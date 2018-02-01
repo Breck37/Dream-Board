@@ -1,9 +1,11 @@
 .home-component {
-    background-image: url('wires1.png');
-    height: 100%;
-    width: 100%;
+    /* background-image: url('wires1.png'); */
+    height: 100vh;
+    width: 100vw;
+    /* background-position: center;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-size: cover;
+    position: relative; */
     margin: 0 auto;
 }
 
@@ -23,6 +25,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-image: url('wires1.png');
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;   
 }
 
 .buttons{
