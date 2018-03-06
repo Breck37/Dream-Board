@@ -12,7 +12,7 @@ const express = require("express"),
 
 app.use(bodyParser.json());
 
-// app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build`));
 
 app.use(
   session({
@@ -80,6 +80,7 @@ app.post('/logout', (req, res) => {
 })
 
 app.post("/login", (req, res) => {
+  console.log(req.body)
   const { userId } = req.body;
   const auth0Url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${userId}`;
   axios.get(auth0Url, {
@@ -124,9 +125,9 @@ app.get("/user-data", checkLoggedIn, (req, res) => {
   }
 });
 
-// app.get('*', (req, res)=>{
-//   res.sendFile(path.join(__dirname, '../build/index.html'));
-// })
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 const PORT = 3035;
 {/*"proxy": "http://138.197.196.90:5000",*/}

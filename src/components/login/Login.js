@@ -38,6 +38,8 @@ class Login extends Component {
     );
     this.lock.on("authenticated", authResult => {
       this.lock.getUserInfo(authResult.accessToken, (error, user) => {
+        console.log(user.sub)
+        console.log(user)
         axios.post("/login", { userId: user.sub }).then(response => {
           this.props.login(response.data.user);
           this.props.history.push("/home");

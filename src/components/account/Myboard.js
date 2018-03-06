@@ -60,6 +60,7 @@ class Myboard extends Component {
 
   render() {
     const { contents } = this.state;
+    console.log(this.state.contents, contents)
     return (
       <div className="myboard-component">
         <Header />
@@ -85,7 +86,7 @@ class Myboard extends Component {
               breakpoints={{ lg: 1024, md: 996, sm: 667, xs: 375 }}
               cols={{ lg: 4, md: 3, sm: 2, xs: 1 }}
             >
-              {contents.map((elem, i) => {
+              {this.state.contents.map((elem, i) => {
                 return (
                   <div key={i} className="tiles">
                     <img
@@ -103,7 +104,7 @@ class Myboard extends Component {
             </Grid>
           ) : (
             <Masonry className="t-board" resize="true">
-              {contents.map((elem, i) => {
+              {this.state.contents.map((elem, i) => {
                 return (
                   <div key={i} className="tiles">
                     <img
