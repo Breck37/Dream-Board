@@ -129,6 +129,6 @@ app.get('*', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'));
 })
 
-const PORT = 5000;
+const PORT = process.env.PORT || 80;
 {/*"proxy": "http://138.197.196.90:5000",*/}
 app.listen(PORT, () => console.log(`We be jamming to the tunes of ${PORT}`));
