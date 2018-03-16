@@ -61,8 +61,8 @@ class Login extends Component {
   render() {
     return (
       <div className='login-component'>
-      <div className="login-page">
         <img className='seize' src={logo} alt=''/>   
+      <div className="login-page">
       
           <button className={this.state.about ? 'btn-min' : "btn-login"} onClick={this.login}>
             Login/Register
@@ -72,7 +72,7 @@ class Login extends Component {
       <div className='about'>
         {this.state.about ? 
         <div className='text'>
-          <h1 className='welcome'>Welcome to Seize My Dream</h1>
+          {/* <h1 className='welcome'></h1> */}
         <p className='login-text'>The digital vision board application that provides you, the user, an opportunity to gather a collection of images and design your future vision. Simply add an image by url, and save it to your account with relative ease.</p><br/>
         <p className='login-text'>Log in to try it for yourself!</p><br/>
         <p className='login-text'>Demo Login: Username: demo@123.com, password: 123</p>

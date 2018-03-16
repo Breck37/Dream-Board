@@ -7,14 +7,46 @@
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-}
-.login-page{
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.login-page{
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.seize {
+    width: 50%;
+}
+
+.btn-login {
+    margin: 5vh;
+    height: 8vh;
+    width: 15vw;
+    background: white;
+    color: rgb(88, 24, 156);
+    font-size: 18pt;
+    font-weight: bold;
+}
+
 .btn-login:hover {
+    transform: scale(1.2);
+}
+
+.about-btn {
+    margin: 5vh;
+    height: 8vh;
+    width: 15vw;
+    background: transparent;
+    color: white;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.about-btn:hover {
     transform: scale(1.2);
 }
 
