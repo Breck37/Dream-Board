@@ -1,2 +1,2 @@
-INSERT INTO users (auth0_id, name, email, social) VALUES ($1, $2, $3, $4)
+INSERT INTO users_bcrypt (username, password) VALUES ($1, $2)
 RETURNING *;

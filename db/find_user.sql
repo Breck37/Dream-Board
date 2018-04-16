@@ -1,1 +1,1 @@
-Select * FROM users WHERE auth0_id = $1 LIMIT 1;
+Select * FROM users_bcrypt WHERE username = $1 LIMIT 1;

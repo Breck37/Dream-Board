@@ -4,53 +4,70 @@ import logo from "../styles/Untitled design.png";
 import "../styles/Login.css";
 import { login } from "../../ducks/reducer";
 import { connect } from "react-redux";
-import Auth0Lock from "auth0-lock";
+// import Auth0Lock from "auth0-lock";
 import axios from "axios";
 
-let options = {
-  theme: {
-    logo: logo,
-    primaryColor: "#c123dd",
-    backgroundColor: "#cd39fa"
-  },
-  languageDictionary: {
-    title: "Seize My Dream"
-  }
-};
+// let options = {
+//   theme: {
+//     logo: logo,
+//     primaryColor: "#c123dd",
+//     backgroundColor: "#cd39fa"
+//   },
+//   languageDictionary: {
+//     title: "Seize My Dream"
+//   }
+// };
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      about: false
+      about: false,
+      login: false,
+        username: '',
+        password: '',
     }
     this.lock = null;
-    this.login = this.login.bind(this);
+    // this.login = this.login.bind(this);
     this.showAbout = this.showAbout.bind(this);
   }
 
   //Creating Auth0 Functionality within Login Component
-  componentDidMount() {
-    this.lock = new Auth0Lock(
-      process.env.REACT_APP_AUTH0_CLIENT_ID,
-      process.env.REACT_APP_AUTH0_DOMAIN,
-      options
-    );
-    this.lock.on("authenticated", authResult => {
-      this.lock.getUserInfo(authResult.accessToken, (error, user) => {
-        console.log(user.sub)
-        console.log(user)
-        axios.post("/login", { userId: user.sub }).then(response => {
-          this.props.login(response.data.user);
-          this.props.history.push("/home");
-        });
-      });
-    });
+  // componentDidMount() {
+  //   this.lock = new Auth0Lock(
+  //     process.env.REACT_APP_AUTH0_CLIENT_ID,
+  //     process.env.REACT_APP_AUTH0_DOMAIN,
+  //     options
+  //   );
+  //   this.lock.on("authenticated", authResult => {
+  //     this.lock.getUserInfo(authResult.accessToken, (error, user) => {
+  //       console.log(user.sub)
+  //       console.log(user)
+  //       axios.post("/login", { userId: user.sub }).then(response => {
+  //         this.props.login(response.data.user);
+  //         this.props.history.push("/home");
+  //       });
+  //     });
+  //   });
+  // }
+
+  logging(){
+    console.log(this.state.login)
+    this.setState({
+      login: true
+    })
   }
 
-  login() {
-    this.lock.show();
+  submitLogin(){
+    // console.log(this.state.username, this.state.password);
+    const { username, password } = this.state
+    axios.post("/loggedin", {username, password}).then(response => {
+      const user = {username: response.data.username, id: response.data.id}
+      this.props.login(user);
+      this.props.history.push('/home')
+    })
   }
+
 
   showAbout(){
     this.setState({
@@ -59,14 +76,21 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className='login-component'>
-        <img className='seize' src={logo} alt=''/>   
       <div className="login-page">
       
-          <button className={this.state.about ? 'btn-min' : "btn-login"} onClick={this.login}>
+          {!this.state.login ? <button className={this.state.about ? 'btn-min' : "btn-login"} onClick={() => this.logging()}>
             Login/Register
-          </button>
+          </button> : null}
+
+          {this.state.login ? <div>
+                              
+                              <input type="text" placeholder='Enter Username' onChange={e => this.setState({username: e.target.value})}/>
+                              <input type="text" placeholder='Enter Password' onChange={e => this.setState({password: e.target.value})}/>
+                              <button onClick={() => this.submitLogin()}>Login</button>
+                              </div> : null}
 
       {/* </div> */}
       <div className='about'>
@@ -79,6 +103,7 @@ class Login extends Component {
         </div> : <button className='about-btn' onClick={this.showAbout}>About</button>}
       </div>
       </div>
+        <img className='seize' src={logo} alt=''/>   
       
       </div>
     );

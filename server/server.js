@@ -1,4 +1,7 @@
 require("dotenv").config();
+// const express = require('express'),
+//       bodyParser = require('body-parser')
+
 const express = require("express"),
   massive = require("massive"),
   session = require("express-session"),
@@ -8,7 +11,13 @@ const express = require("express"),
   actrl = require("./controllers/account_controller"),
   ictrl = require("./controllers/image_controller"),
   path = require('path'),
-  app = express();
+  bcrypt = require('bcrypt');
+
+////// CHECK CURRENT BRANCH ////////
+
+const app = express();
+
+const saltRounds = 12;
 
 app.use(bodyParser.json());
 
@@ -79,35 +88,53 @@ app.post('/logout', (req, res) => {
   res.send();
 })
 
-app.post("/login", (req, res) => {
-  console.log(req.body)
-  const { userId } = req.body;
-  const auth0Url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${userId}`;
-  axios.get(auth0Url, {
-      headers: {
-          Authorization: 'Bearer ' + process.env.AUTH0_MANAGEMENT_ACCESS_TOKEN
-      }
-  }).then(response => {
-      //Set User Data Object
-      const userData = response.data;
-      //Find if user is already in database.
-      app.get('db').find_user(userData.user_id).then(users => {
-          if(users.length){
-              req.session.user = users[0];
-              res.json({ user: req.session.user })
-          } else {
-              //If no user in Database, Create new User.
-              app.get('db').create_user([userData.user_id, userData.name, userData.email, userData.picture]).then(user => {
-                  req.session.user = user[0];
-                  res.json({ user: req.session.user });
-              })
-          }
-      }).catch(err => console.log('sup', err))
-  }).catch(err => {
-      console.log('USER', err);
-      res.status(500).json({message: 'Server 500'});
-  })
-});
+app.post('/loggedin', (req, res) => {
+  console.log('hey', req.body);
+  const { username, password } = req.body;
+  app.get('db').find_user(username).then(user => {
+    if(user.length){
+      bcrypt.compare(password, user[0].password).then(() => {
+        req.session.user = {username}
+        res.status(200).send(req.session.user)
+      }).catch(err => console.log('Login 1', err))
+    } else {
+      app.get('db').create_user([username, password]).then(user => {
+        req.session.user = user;
+        res.status(200).send(req.session.user)
+      }).catch(err => console.log('Login 2',err))
+    }
+  }).catch(err => console.log('Login 3',err))
+})
+
+// app.post("/login", (req, res) => {
+//   console.log(req.body)
+//   const { userId } = req.body;
+//   const auth0Url = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users/${userId}`;
+//   axios.get(auth0Url, {
+//       headers: {
+//           Authorization: 'Bearer ' + process.env.AUTH0_MANAGEMENT_ACCESS_TOKEN
+//       }
+//   }).then(response => {
+//       //Set User Data Object
+//       const userData = response.data;
+//       //Find if user is already in database.
+//       app.get('db').find_user(userData.user_id).then(users => {
+//           if(users.length){
+//               req.session.user = users[0];
+//               res.json({ user: req.session.user })
+//           } else {
+//               //If no user in Database, Create new User.
+//               app.get('db').create_user([userData.user_id, userData.name, userData.email, userData.picture]).then(user => {
+//                   req.session.user = user[0];
+//                   res.json({ user: req.session.user });
+//               })
+//           }
+//       }).catch(err => console.log('sup', err))
+//   }).catch(err => {
+//       console.log('USER', err);
+//       res.status(500).json({message: 'Server 500'});
+//   })
+// });
 
 function checkLoggedIn(req, res, next) {
   if (req.session.user) {
@@ -125,10 +152,11 @@ app.get("/user-data", checkLoggedIn, (req, res) => {
   }
 });
 
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-})
+// app.get('*', (req, res)=>{
+//   res.sendFile(path.join(__dirname, '../build/index.html'));
+// })
 
-const PORT = process.env.PORT || 80;
+// const PORT = process.env.PORT || 80;
+const PORT = 3000;
 {/*"proxy": "http://138.197.196.90:5000",*/}
 app.listen(PORT, () => console.log(`We be jamming to the tunes of ${PORT}`));

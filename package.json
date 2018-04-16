@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "main": "server/server.js",
-  "proxy": "http://138.197.196.90:5000",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "auth0-lock": "^11.0.1",
     "aws-sdk": "^2.182.0",
     "axios": "^0.17.1",
+    "bcrypt": "^2.0.0",
     "body-parser": "^1.18.2",
     "cors-prefetch-middleware": "^1.0.0",
     "dotenv": "^4.0.0",

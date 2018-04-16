@@ -41,6 +41,7 @@ class Home extends Component {
       this.props.history.push('/loggedout')
     });
   }
+
   showQuote(){
     axios.get('/homes').then(response => {
       let q = response.data.contents.quotes[0].quote;
