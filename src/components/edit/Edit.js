@@ -21,7 +21,7 @@ class Edit extends Component {
       .get("/user-data")
       .then(response => {
         const user = response.data;
-        this.props.login(user);
+        // this.props.login(user);
         const { id } = this.props.match.params;
         axios.get(`/alterdream/${id}`).then(response => {
           const { image_url, image_text } = response.data[0];

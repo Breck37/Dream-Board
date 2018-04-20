@@ -11,7 +11,7 @@ class Tips extends Component {
     componentDidMount(){
         axios.get('/user-data').then(response => {
             const user = response.data
-            this.props.login(user)
+            // this.props.login(user)
           }).catch(() => {
             this.props.history.push('/loggedout')
           })   

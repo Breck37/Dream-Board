@@ -21,7 +21,7 @@ class AccountInfo extends Component {
       .get("/user-data")
       .then(response => {
         const username = response.data;
-        this.props.login(username);
+        // this.props.login(username);
       })
       .catch((err) => {
           console.log(err, 'user error')

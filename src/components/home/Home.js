@@ -3,7 +3,7 @@ import Header from "../header/Header";
 import axios from "axios";
 import "../styles/Home.css";
 import Masonry from "react-masonry-component";
-import Grid from "react-grid-layout";
+import {Responsive as ResponsiveGridLayout} from "react-grid-layout";
 import { connect } from "react-redux";
 import {login} from '../../ducks/reducer';
 
@@ -19,27 +19,31 @@ class Home extends Component {
       grid: false
     };
     this.handleGrid = this.handleGrid.bind(this);
-    this.backToMason = this.backToMason.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.showQuote = this.showQuote.bind(this);
     this.hideQuote = this.hideQuote.bind(this);
   }
 
   componentDidMount() {
-    axios.get('/user-data').then(response => {
-      const user = response.data
-      this.props.login(response.data)
-      axios.get(`/myimages/${user.id}`).then(response => {
-        axios.get("/home").then(response => {
-          let res = response.data.ListBucketResult.Contents;
-          this.setState({
-            contents: res
-          });
-        })
+    if(this.props.user){
+      axios.get("/home").then(response => {
+        let res = response.data.ListBucketResult.Contents;
+        console.log(res)
+        this.setState({
+          contents: res
+        });
+      })
+    } else {
+      axios.get('/user-data').then(response => {
+        // const user = response.data
+        this.props.login(response.data)
+        // axios.get(`/myimages/${user.id}`).then(response => {
+          
+        // });
+      }).catch(() => {
+        this.props.history.push('/loggedout')
       });
-    }).catch(() => {
-      this.props.history.push('/loggedout')
-    });
+    }
   }
 
   showQuote(){
@@ -60,16 +64,16 @@ class Home extends Component {
   }
 
   handleGrid() {
+    if(!this.state.grid){
     this.setState({
       grid: true
     });
-  }
-
-  backToMason() {
+  } else {
     this.setState({
       grid: false
-    });
+    })
   }
+}
 
   render() {
     return (
@@ -80,10 +84,9 @@ class Home extends Component {
               <button className='home-btn' onClick={this.showQuote}>Quote of the Day</button>
               {this.state.quote ? <button className='home-btn' onClick={this.hideQuote}>Hide Quote</button> : null}
             </div>
-            <button className='home-btn' onClick={this.handleGrid}>
+            {!this.state.grid ? <button className='home-btn' onClick={this.handleGrid}>
               Click Here for Drag and Drop
-            </button>
-            <button className='home-btn' onClick={this.backToMason}>Reset</button>
+            </button> : <button className='home-btn' onClick={this.handleGrid}>Click Here to Reset</button>}
             {this.state.quote ? 
               <div className='quote'>
               {this.state.quote}
@@ -92,7 +95,7 @@ class Home extends Component {
         </div>
             <div className="tile-background">
             {this.state.grid ? (
-              <Grid className='t'>
+              <ResponsiveGridLayout className='t' layout={{ x: 4, y: 0, w: 1, h: 2 }}>
                 {this.state.contents.map((elem, i) => {
                   return (
                     <div key={i} className="tiles">
@@ -103,13 +106,13 @@ class Home extends Component {
                         }`}
                         alt="display"
                         className="home-image"
-                        data-grid={{ x: 4, y: 0, w: 1, h: 2 }}
+                        // data-grid={{ x: 4, y: 0, w: 1, h: 2 }}
                         onClick={this.imageClick}
                       />
                     </div>
                   );
                 })}
-              </Grid>
+              </ResponsiveGridLayout>
             ) : (
               <Masonry className='t' columnwidth={300}>
                 {this.state.contents.map((elem, i) => {

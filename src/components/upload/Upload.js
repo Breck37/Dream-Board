@@ -23,7 +23,7 @@ class Upload extends Component {
   componentDidMount(){
     axios.get('/user-data').then(response => {
       const user = response.data
-      this.props.login(user)
+      // this.props.login(user)
       axios.get('/getcategory').then(response => {
         console.log(response.data)
         this.setState({

@@ -18,3 +18,9 @@ CREATE TABLE IF NOT EXISTS dream_category (
 id SERIAL PRIMARY KEY,
 category_name TEXT
 );
+
+-- CREATE TABLE users_bcrypt (
+--   id SERIAL PRIMARY KEY,
+--   username VARCHAR UNIQUE,
+--   password VARCHAR
+-- );

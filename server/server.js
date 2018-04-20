@@ -27,7 +27,8 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
-    resave: false
+    resave: false,
+    maxAge: 60 * 60 * 24 * 14
   })
 );
 
@@ -44,8 +45,11 @@ app.get("/home", (req, res) => {
   axios
     .get("http://seize-the-dream.s3-accelerate.amazonaws.com")
     .then(response => {
+      // console.log(response)
       var json = parser.toJson(response.data);
+      // console.log(json)
       var j = JSON.parse(json);
+      // console.log(j)
       res.status(200).json(j);
     });
   });
@@ -89,19 +93,29 @@ app.post('/logout', (req, res) => {
 })
 
 app.post('/loggedin', (req, res) => {
-  console.log('hey', req.body);
+  // console.log('hey', req.body);
   const { username, password } = req.body;
-  app.get('db').find_user(username).then(user => {
+  app.get('db').find_user([username]).then(user => {
+    // console.log('user', user)
+    const {id} = user[0];
     if(user.length){
-      bcrypt.compare(password, user[0].password).then(() => {
-        req.session.user = {username}
-        res.status(200).send(req.session.user)
+      bcrypt.compare(password, user[0].password).then(passwordMatch => {
+        if(passwordMatch){
+          // console.log('Yo', username, id)
+          req.session.user = {username, id}
+          res.status(200).send(req.session.user)
+        } else {
+          res.status(403).json({message: 'Wrong Password'})
+        }
       }).catch(err => console.log('Login 1', err))
     } else {
-      app.get('db').create_user([username, password]).then(user => {
-        req.session.user = user;
-        res.status(200).send(req.session.user)
-      }).catch(err => console.log('Login 2',err))
+      bcrypt.hash(password, saltRounds).then(hashedPassword => {
+        app.get('db').create_user([username, hashedPassword]).then(user => {
+          // console.log('create', user)
+          req.session.user = {username};
+          res.status(200).send(req.session.user)
+        }).catch(err => console.log('Login 2',err))
+      })
     }
   }).catch(err => console.log('Login 3',err))
 })
@@ -145,6 +159,7 @@ function checkLoggedIn(req, res, next) {
 }
 
 app.get("/user-data", checkLoggedIn, (req, res) => {
+  console.log('Sesh', req.session.user)
   if (req.session.user) {
     res.status(200).send(req.session.user);
   } else {
@@ -157,6 +172,6 @@ app.get("/user-data", checkLoggedIn, (req, res) => {
 // })
 
 // const PORT = process.env.PORT || 80;
-const PORT = 3000;
+const PORT = 3001;
 {/*"proxy": "http://138.197.196.90:5000",*/}
 app.listen(PORT, () => console.log(`We be jamming to the tunes of ${PORT}`));

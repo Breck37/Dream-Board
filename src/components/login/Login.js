@@ -63,6 +63,7 @@ class Login extends Component {
     const { username, password } = this.state
     axios.post("/loggedin", {username, password}).then(response => {
       const user = {username: response.data.username, id: response.data.id}
+      console.log('USER', user)
       this.props.login(user);
       this.props.history.push('/home')
     })
@@ -88,7 +89,7 @@ class Login extends Component {
           {this.state.login ? <div>
                               
                               <input type="text" placeholder='Enter Username' onChange={e => this.setState({username: e.target.value})}/>
-                              <input type="text" placeholder='Enter Password' onChange={e => this.setState({password: e.target.value})}/>
+                              <input type="password" placeholder='Enter Password' onChange={e => this.setState({password: e.target.value})}/>
                               <button onClick={() => this.submitLogin()}>Login</button>
                               </div> : null}
 

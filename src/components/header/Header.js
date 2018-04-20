@@ -7,12 +7,13 @@ import {connect} from 'react-redux';
 class Header extends Component {
 
     render() {
+        console.log(this.props)
         return (
             <div className='main-header-container'>
                 <div className='header responsive'>
                 <Link to='/home'><img className='logo' src={logo} alt=''/>
                 </Link>
-                <Link className='header-link' to='/accountInfo'><span>Hello, {this.props.user.name}</span></Link>
+                <Link className='header-link' to='/accountInfo'><span>Hello, {this.props.user.username}</span></Link>
                 <div className='links'>
                 <Link to='/mydreams' className='header-link'>My Board</Link>
                 <span className='dash'>|</span>

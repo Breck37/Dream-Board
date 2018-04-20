@@ -25,6 +25,7 @@ export default function reducer(state = initialState, action) {
 }
 
 export const login = user => {
+  console.log('Reducer', user)
   return {
     type: LOGIN,
     payload: user

@@ -24,7 +24,8 @@ class Myboard extends Component {
       .get("/user-data")
       .then(response => {
         const user = response.data;
-        this.props.login(response.data);
+        console.log('sesh', user)
+        // this.props.login(response.data);
         axios.get(`/myimages/${user.id}`).then(response => {
           const image = response.data;
           console.log(image);
