@@ -20,6 +20,7 @@ class Myboard extends Component {
     this.backToMason = this.backToMason.bind(this);
   }
   componentDidMount(props) {
+    if(this.props.user)
     axios
       .get("/user-data")
       .then(response => {

@@ -37,9 +37,13 @@ class Home extends Component {
       axios.get('/user-data').then(response => {
         // const user = response.data
         this.props.login(response.data)
-        // axios.get(`/myimages/${user.id}`).then(response => {
-          
-        // });
+        axios.get("/home").then(response => {
+          let res = response.data.ListBucketResult.Contents;
+          console.log(res)
+          this.setState({
+            contents: res
+          });
+        })
       }).catch(() => {
         this.props.history.push('/loggedout')
       });
