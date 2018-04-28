@@ -105,7 +105,6 @@ class Login extends Component {
       </div>
       </div>
         <img className='seize' src={logo} alt=''/>   
-      
       </div>
     );
   }

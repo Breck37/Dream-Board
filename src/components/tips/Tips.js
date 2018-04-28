@@ -9,12 +9,17 @@ import {login} from '../../ducks/reducer'
 class Tips extends Component {
   
     componentDidMount(){
-        axios.get('/user-data').then(response => {
-            const user = response.data
-            // this.props.login(user)
-          }).catch(() => {
-            this.props.history.push('/loggedout')
-          })   
+        if(this.props.user){
+            
+          } else {
+            axios.get('/user-data').then(response => {
+              // const user = response.data
+              this.props.login(response.data)
+              console.log('lost')
+            }).catch(() => {
+              this.props.history.push('/loggedout')
+            });
+          } 
     }
 
     render() {

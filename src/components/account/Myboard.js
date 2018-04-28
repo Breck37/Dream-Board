@@ -20,27 +20,29 @@ class Myboard extends Component {
     this.backToMason = this.backToMason.bind(this);
   }
   componentDidMount(props) {
-    if(this.props.user)
-    axios
-      .get("/user-data")
-      .then(response => {
-        const user = response.data;
-        console.log('sesh', user)
-        // this.props.login(response.data);
-        axios.get(`/myimages/${user.id}`).then(response => {
-          const image = response.data;
-          console.log(image);
-          this.setState({
-            contents: image
-          });
+    if(this.props.user){
+      axios.get(`/myimages/${this.props.user.id}`).then(response => {
+        const image = response.data;
+        console.log(image);
+        this.setState({
+          contents: image
         });
-      })
-      .catch(() => {
-        this.props.history.push("/");
       });
-  }
+    } else {
+      axios
+        .get("/user-data")
+        .then(response => {
+          const user = response.data;
+          console.log('sesh', user)
+          this.props.login(response.data);
+    }).catch(() => {
+      this.props.history.push("/");
+    });
+  }    
+}
 
   deleteImage(id) {
+    console.log(id, this.props.user.id)
     axios.delete(`/deletedream/${id}/${this.props.user.id}`).then(response => {
       this.setState({
         contents: response.data

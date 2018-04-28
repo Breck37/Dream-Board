@@ -28,7 +28,6 @@ class Home extends Component {
     if(this.props.user){
       axios.get("/home").then(response => {
         let res = response.data.ListBucketResult.Contents;
-        console.log(res)
         this.setState({
           contents: res
         });
@@ -37,6 +36,7 @@ class Home extends Component {
       axios.get('/user-data').then(response => {
         // const user = response.data
         this.props.login(response.data)
+        console.log('lost')
         axios.get("/home").then(response => {
           let res = response.data.ListBucketResult.Contents;
           console.log(res)

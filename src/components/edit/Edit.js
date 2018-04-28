@@ -17,23 +17,17 @@ class Edit extends Component {
   }
 
   componentDidMount(props) {
-    axios
-      .get("/user-data")
-      .then(response => {
-        const user = response.data;
-        // this.props.login(user);
-        const { id } = this.props.match.params;
-        axios.get(`/alterdream/${id}`).then(response => {
-          const { image_url, image_text } = response.data[0];
-          this.setState({
-            url: image_url,
-            text: image_text
-          });
-        });
-      })
-      .catch(() => {
-        this.props.history.push("/");
+    if(this.props.user){
+      
+    } else {
+      axios.get('/user-data').then(response => {
+        // const user = response.data
+        this.props.login(response.data)
+        console.log('lost')
+      }).catch(() => {
+        this.props.history.push('/loggedout')
       });
+    }
   }
 
   updateText(e) {

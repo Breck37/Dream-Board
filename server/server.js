@@ -65,7 +65,7 @@ app.get("/homes", (req, res) => {
 
 
 //JOIN statement, needs Update
-app.get("/mydreams/:userid", actrl.getAccount);
+app.get("/myimages/:userid", actrl.getAccount);
 
 //Upload Image
 app.post("/uploadimage/:userid", ictrl.addImage);

@@ -21,18 +21,28 @@ class Upload extends Component {
   }
 
   componentDidMount(){
-    axios.get('/user-data').then(response => {
-      const user = response.data
-      // this.props.login(user)
+    if(this.props.user){
       axios.get('/getcategory').then(response => {
         console.log(response.data)
         this.setState({
           categories: response.data
         })
       })
-    }).catch(() => {
-      this.props.history.push('/loggedout')
-    });
+    } else {
+      axios.get('/user-data').then(response => {
+        // const user = response.data
+        this.props.login(response.data)
+        console.log('lost')
+        axios.get('/getcategory').then(response => {
+          console.log(response.data)
+          this.setState({
+            categories: response.data
+          })
+        })
+      }).catch(() => {
+        this.props.history.push('/loggedout')
+      });
+    } 
   }
 
   _handleSubmit(e) {
