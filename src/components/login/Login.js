@@ -200,7 +200,9 @@ class Login extends Component {
                 <button className='about-btn' onClick={this.showAbout}>About</button>
               }
           </div> 
-
+          <div id='stars'></div>
+          <div id='stars2'></div>
+          <div id='stars3'></div>
       </div>
     );
   }

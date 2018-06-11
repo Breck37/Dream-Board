@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import '../styles/Header.css';
 import logo from '../styles/imageedit_3_4114329595.png';
 import { connect } from 'react-redux';
-import { login } from '../../ducks/reducer';
-import axios from 'axios';
+// import { login } from '../../ducks/reducer';
+// import axios from 'axios';
 
 class Header extends Component {
 
     render() {
+        console.log(this.props)
+        if(!this.props.user.name || !this.props.user.username){
+            // this.props.history.push('/loggedout')
+            return <Redirect to='/loggedout'/>
+        }
         return (
             <div className='main-header-container'>
                 <div className='header responsive'>
@@ -38,4 +43,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { login })(Header);
+export default connect(mapStateToProps)(Header);

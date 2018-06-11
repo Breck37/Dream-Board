@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "../header/Header";
 import axios from "axios";
 import "../styles/Home.css";
-import Masonry from "react-masonry-component";
+// import Masonry from "react-masonry-component";
 import {Responsive as ResponsiveGridLayout} from "react-grid-layout";
 import { connect } from "react-redux";
 import {login} from '../../ducks/reducer';
@@ -108,7 +108,7 @@ class Home extends Component {
         
             <div className="tile-background">
             {this.state.grid ? (
-              <ResponsiveGridLayout className='t' layout={{ x: 4, y: 0, w: 1, h: 2 }}>
+              <ResponsiveGridLayout className='t' style={{width: '75%', containerWidth: '100%'}} layout={{ x: 4, y: 0, w: 1, h: 2 }}>
                 {this.state.contents.map((elem, i) => {
                   return (
                     <div key={i} className="tiles">
@@ -118,16 +118,17 @@ class Home extends Component {
                           elem.Key
                         }`}
                         alt="display"
-                        className="home-image"
+                        className="home-image-drag"
                         // data-grid={{ x: 4, y: 0, w: 1, h: 2 }}
                         onClick={this.imageClick}
                       />
                     </div>
                   );
                 })}
-              </ResponsiveGridLayout>
+            </ResponsiveGridLayout> 
             ) : (
-              <Masonry className='t' columnwidth={300}>
+              // <Masonry className='t' columnwidth={300}>
+              <div className='home-grid'>
                 {this.state.contents.map((elem, i) => {
                   // {console.log('element', elem)}
                   return (
@@ -145,12 +146,11 @@ class Home extends Component {
                     </div>
                   );
                 })}
-              </Masonry>
+              </div>
+              // </Masonry>
             )}
         </div>
-            <div id='stars'></div>
-            <div id='stars2'></div>
-            <div id='stars3'></div>
+          
       </div>
     );
   }
