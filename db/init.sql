@@ -8,7 +8,7 @@ social TEXT
 
 CREATE TABLE IF NOT EXISTS dream_images (
 id SERIAL,
-user_id INT NOT NULL REFERENCES users,
+user_id INT NOT NULL REFERENCES users_bcrypt(id),
 image_url TEXT,
 image_text TEXT,
 category INT references dream_category(id)

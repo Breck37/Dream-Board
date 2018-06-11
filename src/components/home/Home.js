@@ -27,15 +27,22 @@ class Home extends Component {
   componentDidMount() {
     if(this.props.user){
       axios.get("/home").then(response => {
-        let res = response.data.ListBucketResult.Contents;
+        console.log('response', response.data)
+        const { user } = response.data;
+        this.props.login(user)
+        let res = response.data.j.ListBucketResult.Contents;
         this.setState({
           contents: res
         });
+      }).catch(() => {
+        this.props.history.push('/loggedout')
       })
     } else {
       axios.get('/user-data').then(response => {
-        // const user = response.data
-        this.props.login(response.data)
+        console.log('----SESSION', response.data)
+        const { user } = response.data
+        window.sessionStorage.setItem()
+        this.props.login(user)
         console.log('lost')
         axios.get("/home").then(response => {
           let res = response.data.ListBucketResult.Contents;
@@ -51,7 +58,7 @@ class Home extends Component {
   }
 
   showQuote(){
-    axios.get('/homes').then(response => {
+    axios.get('/quote').then(response => {
       let q = response.data.contents.quotes[0].quote;
       this.setState({
         quote: q
@@ -97,6 +104,8 @@ class Home extends Component {
               </div>
                : null}
         </div>
+    
+        
             <div className="tile-background">
             {this.state.grid ? (
               <ResponsiveGridLayout className='t' layout={{ x: 4, y: 0, w: 1, h: 2 }}>
@@ -139,6 +148,9 @@ class Home extends Component {
               </Masonry>
             )}
         </div>
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
       </div>
     );
   }
@@ -150,4 +162,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {login})(Home);
+export default connect(mapStateToProps, { login })(Home);

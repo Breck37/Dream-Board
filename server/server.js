@@ -1,7 +1,4 @@
 require("dotenv").config();
-// const express = require('express'),
-//       bodyParser = require('body-parser')
-
 const express = require("express"),
   massive = require("massive"),
   session = require("express-session"),
@@ -40,23 +37,20 @@ massive(process.env.CONNECTION_STRING)
     console.log("DB error", err);
   });
 
-//PULLING IMAGES FROM API OR S3
+// PULLING IMAGES FROM API OR S3
 app.get("/home", (req, res) => {
   axios
     .get("http://seize-the-dream.s3-accelerate.amazonaws.com")
     .then(response => {
-      // console.log(response)
       var json = parser.toJson(response.data);
-      // console.log(json)
       var j = JSON.parse(json);
-      // console.log(j)
-      res.status(200).json(j);
+      res.status(200).json({j, user: req.session.user});
     });
   });
 
 
-//PULL QUOTE OF DAY FROM API
-app.get("/homes", (req, res) => {
+// PULL QUOTE OF DAY FROM API
+app.get("/quote", (req, res) => {
   axios.get("http://quotes.rest/qod.json").then(response => {
     const data = response.data;
     res.status(200).json(data);
@@ -93,31 +87,36 @@ app.post('/logout', (req, res) => {
 })
 
 app.post('/loggedin', (req, res) => {
-  // console.log('hey', req.body);
   const { username, password } = req.body;
-  app.get('db').find_user([username]).then(user => {
-    // console.log('user', user)
-    const {id} = user[0];
+  app.get('db').find_user([username]).then(user => { 
     if(user.length){
+      console.log(user)
+      const {id, name, email, username } = user[0];
       bcrypt.compare(password, user[0].password).then(passwordMatch => {
         if(passwordMatch){
-          // console.log('Yo', username, id)
-          req.session.user = {username, id}
-          res.status(200).send(req.session.user)
+          req.session.user = { id, email, name, username }
+          res.status(200).send( req.session.user )
         } else {
-          res.status(403).json({message: 'Wrong Password'})
+          res.send({error: 'Wrong Username or Password'})
         }
       }).catch(err => console.log('Login 1', err))
     } else {
-      bcrypt.hash(password, saltRounds).then(hashedPassword => {
-        app.get('db').create_user([username, hashedPassword]).then(user => {
-          // console.log('create', user)
-          req.session.user = {username};
-          res.status(200).send(req.session.user)
-        }).catch(err => console.log('Login 2',err))
-      })
+      res.send({error: 'No User Found'})
     }
-  }).catch(err => console.log('Login 3',err))
+  }).catch(() => res.status(403).send({error: 'Something went wrong. Please try again.'}))
+})
+
+app.post('/register', (req, res) => {
+  const { name, email, username, password } = req.body;
+  bcrypt.hash( password, saltRounds ).then( hashedPassword => {
+    app.get('db').create_user({name, email, username, hashedPassword}).then(user => {
+      req.session.user = user;
+      res.status(200).send(req.session.user)
+    }).catch(err => {
+      console.log('Login 2',err);
+      res.status(200).send({error: 'Something went wrong, please try a different username or try again.'})
+    })
+  })
 })
 
 // app.post("/login", (req, res) => {
@@ -161,7 +160,7 @@ function checkLoggedIn(req, res, next) {
 app.get("/user-data", checkLoggedIn, (req, res) => {
   console.log('Sesh', req.session.user)
   if (req.session.user) {
-    res.status(200).send(req.session.user);
+    res.status(200).send({user: req.session.user});
   } else {
     res.status(403).send('You must login');
   }
@@ -172,6 +171,6 @@ app.get("/user-data", checkLoggedIn, (req, res) => {
 // })
 
 // const PORT = process.env.PORT || 80;
-const PORT = 3001;
+const PORT = 4000;
 {/*"proxy": "http://138.197.196.90:5000",*/}
 app.listen(PORT, () => console.log(`We be jamming to the tunes of ${PORT}`));

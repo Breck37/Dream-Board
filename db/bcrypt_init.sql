@@ -1,5 +1,7 @@
-CREATE TABLE users_bcrypt_demo (
-  id SERIAL PRIMARY KEY,
-  username VARCHAR UNIQUE,
-  password VARCHAR
+CREATE TABLE users_bcrypt (
+id SERIAL PRIMARY KEY,
+name TEXT,
+email TEXT UNIQUE,
+username TEXT UNIQUE,
+password varchar
 );

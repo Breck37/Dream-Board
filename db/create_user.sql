@@ -1,2 +1,1 @@
-INSERT INTO users_bcrypt(username,password) VALUES ($1,$2)
-RETURNING *;
+INSERT INTO users_bcrypt(name, email, username,password) VALUES (${name}, ${email}, ${username}, ${hashedPassword}) RETURNING *;

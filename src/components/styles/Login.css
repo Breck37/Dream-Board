@@ -1,3 +1,5 @@
+/* Outer Elements */
+
 .login-component {
     /* The image used */
     background-image: url("http://galaxydancefestival.com/wp-content/uploads/sites/4/2015/03/Galaxy_dance_festival_bg.jpg");
@@ -11,44 +13,132 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
-.login-page{
-    display: flex; 
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+
+.about {
+    position: relative;
+    height: 225px;
 }
+
 .seize {
     width: 50%;
 }
 
-.btn-login {
-    margin: 5vh;
-    height: 8vh;
-    min-width: 15vw;
-    background: white;
-    color: rgb(88, 24, 156);
-    font-size: 18pt;
-    font-weight: bold;
+/* END Outer Elements */
+
+
+/* Input Elements */
+
+.input-group {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
-.btn-login:hover {
-    transform: scale(1.2);
+.login-flex {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.about-btn {
+.login-flex > div {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group > input, .input-group > .login-flex > div > input {
+    background: transparent;
+    border: none;
+    border-bottom: solid #3bd4e2 2px; 
+    margin: 20px auto;
+    width: 520px;
+    font-size: 2em;
+    color: #3bd4e2;
+    text-align: center;
+}
+
+.input-group > input::placeholder, .input-group > .login-flex > div > input::placeholder {
+    color: #3bd4e2;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.input-group > input:focus, .input-group > .login-flex > div > input:focus {
+    /* border: solid #3bd4e2; */
+    outline: none;
+}
+
+.input-group > div > button {
+    width: auto;
+    margin: 0 auto;
+    background: transparent;
+    border: none;
+    color: #3bd4e2;
+    font-size: 1.7em;
+    cursor: pointer;
+}
+
+#special {
+    background: #3bd4e2;
+    border-radius: .4em;
+    color: #ae55e2;
+    cursor: pointer;
+}
+ 
+
+/* END Input Elements */
+
+/* About Elements */
+
+.text {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    /* margin-top: -50px; */
+    bottom: 0;
+    /* background: #3bd4e2; */
+    /* color: #861de5; */
+    color: white;
+    text-align: center;
+}
+
+.login-text {
+    /* padding-top: 2em; */
+    font-size: 1.5em;
+    height: 225px;
+    color: #3bd4e2;
+}
+
+
+
+.btn-login, .about-btn {
+    cursor: pointer;
     margin: 5vh;
-    height: 8vh;
     min-width: 15vw;
     background: transparent;
-    color: white;
-    font-size: 18pt;
+    color: #3bd4e2;
+    font-size: 3.5em;
     font-weight: bold;
+    /* border: solid 1px rgb(88, 24, 156); */
+    border: none;
 }
 
-.about-btn:hover {
+.btn-login:hover, .about-btn:hover {
     transform: scale(1.2);
 }
+
+
+
+/* Media Queries */
 
 @media screen and (max-width: 500){
     .seize {
@@ -83,7 +173,7 @@
     .about-btn{
         margin: 50px auto;
         width: 25%;
-        border: solid white 1pt;
+        /* border: solid white 1pt; */
         background: transparent;
         font-size: 24pt;
         color: white;
@@ -91,33 +181,35 @@
     }
 }
 
-
-/* .about{
-    margin-top: 20%;
-    color: white;
-    text-align: center;
-    font-size: 8pt;
-} */
-/* .welcome {
-    color: white;
-    font-size: 18pt;
-} */
-
-/* .about > h1{
-    text-align: center;
-} */
-
-/* .welcome:hover{
-    animation-name: fadeText;
-    animation-duration: 5s;
+@media screen and (max-width: 1024px) and (max-height: 1366px){
+    .login-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-.login-text:hover{
-    animation-name: fadeText;
-    animation-duration: 3s;   
-} */
+@media screen and (max-width: 650px) {
+    .login-page {
+        background-size: 100%
+    }
+    .btn-login{
+        margin: 150px auto;
+        font-size: 12pt;
+        width: 200px;
+    }
+    .about {
+        display: none;
+    }
+    .seize {
+        margin-top: 50px;
+    }
+}
 
+/* End Media Queries */
 
+/* ANIMATIONS */
 
 @keyframes fadeText{
     0% {
@@ -146,73 +238,4 @@
     }
 }
 
-/* 
-.btn-login {
-    margin: 50px auto;
-    width: 50%;
-    border: solid black 1pt;
-    background: white;
-    font-size: 24pt;
-    color: purple;
-    position: relative;
-    padding: 25px;
-    padding: 5%;
-}
-.btn-min{
-    margin: 10px auto;
-    padding: 15px;
-    width: 25%;
-    background: white;
-    font-size: 14pt;
-    color: purple;
-    position: relative;
-} */
-
-/* .about-btn{
-    margin: 0 auto;
-    width: 200%;
-    border: solid white 1pt;
-    background: transparent;
-    font-size: 24pt;
-    color: white;
-    padding: 1%;
-    position: relative;
-} */
-
-
-
-@media screen and (max-width: 1024px) and (max-height: 1366px){
-    .login-page {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 800px){
-    /* .about-btn{
-        width: 150%;
-        font-size: 18pt;
-        color: white;
-        border: solid white 2pt;
-        background: transparent;
-    } */
-}
-
-@media screen and (max-width: 650px) {
-    .login-page {
-        background-size: 100%
-    }
-    .btn-login{
-        margin: 150px auto;
-        font-size: 12pt;
-        width: 200px;
-    }
-    .about {
-        display: none;
-    }
-    .seize {
-        margin-top: 50px;
-    }
-}
+/* End Animations */
