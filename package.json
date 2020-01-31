@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "proxy": "http://138.197.196.90:5000",
   "dependencies": {
-    "auth0-lock": "^11.0.1",
+    "auth0-lock": "^11.21.0",
     "aws-sdk": "^2.182.0",
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
